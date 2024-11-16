@@ -1,0 +1,62 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "name": "Fiera del Fumetto Milano",
+      "location": "Milano, Italia",
+      "dates": {
+        "start": "2024-03-15",
+        "end": "2024-03-17"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Fiera del Fumetto Roma",
+      "location": "Roma, Italia",
+            "dates": {
+        "start": "2024-05-20",
+        "end": "2024-05-22"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Action Figure Superhero",
+      "description": "Action figure del supereroe preferito con dettagli incredibili.",
+      "price": 49.99
+    },
+    {
+      "id": 2,
+      "name": "Graphic Novel - Volume 1",
+      "description": "Primo volume di una graphic novel acclamata dalla critica.",
+      "price": 24.99
+    },
+    {
+      "id": 3,
+      "name": "T-shirt Edizione Limitata",
+      "description": "T-shirt in cotone con il logo del fumetto.",
+      "price": 19.99
+    }
+  ],
+  "sales": [
+    {
+      "event_name": "Fiera del Fumetto Milano",
+      "sale_date": "2024-03-15",
+      "product": "Action Figure Superhero",
+      "sale_price": 45.00
+    },
+    {
+      "event_name": "Fiera del Fumetto Roma",
+      "sale_date": "2024-05-21",
+      "product": "T-shirt Edizione Limitata",
+      "sale_price": 18.00
+    },
+    {
+      "event_name": "Fiera del Fumetto Milano",
+      "sale_date": "2024-03-17",
+      "product": "Graphic Novel - Volume 1",
+      "sale_price": 24.99
+    }
+  ]
+}
