@@ -1,19 +1,21 @@
 <template>
-  <div class="justify-center items-center min-h-screen bg-gray-200 p-6 overflow-x-auto">
+  <div class="flex flex-col h-screen max-h-screen overflow-auto bg-gray-200 p-6 gap-y-8 overflow-x-auto  ">
 
-    <Nav :currentSelection="currentSelection" @update:currentSelection="Toggle" />
+    <Nav :currentSelection="currentSelection" @update:currentSelection="Toggle" class=" flex-grow-0" />
 
-    <br>
-    <br>
-    <transition :name="transitionName" mode="out-in">
-      <component :is="currentComponent" :key="currentComponent.name" @update:currentSelection="Toggle"></component>
+    <transition :name="transitionName" mode="out-in" class="flex flex-col max-h-full overflow-y-auto  hide-scrollbar">
+      <component :is="currentComponent" :key="currentComponent.name" @update:currentSelection="Toggle" class=""></component>
     </transition>
+
   </div>
 </template>
 
+
 <script setup>
   import { ref, shallowRef } from 'vue'
-  import data from './assets/data.json'
+  import data from './assets/data.json' // Placeholder, it will be removed after the layout is complete
+  import { usePaminaStore } from './stores/pamina.js'
+
 
   import NewEvent from './components/Events/NewEvent.vue'
   import EventList from './components/Events/EventList.vue'
@@ -29,7 +31,13 @@
 
   // Importa altri componenti se necessario
 
-  const events = ref(data.events)
+  const mainStore = usePaminaStore()
+  mainStore.importEvents(data.events);
+  mainStore.importProducts(data.products);
+  mainStore.importSales(data.sales);
+
+
+  // const events = ref(pamina.events)
 
   const componentsMap = {
     NewEvent,
@@ -52,16 +60,25 @@
   const Direction = (oldValue, newValue) => {
     if (oldValue == 'NewEvent' && newValue == 'NewProduct') { return 'slide-left' }
     if (oldValue == 'NewEvent' && newValue == 'Shop') { return 'slide-left' }
+    if (oldValue == 'NewEvent' && newValue == 'EventList') { return 'slide-up' }
+
     if (oldValue == 'NewProduct' && newValue == 'Shop') { return 'slide-left' }
     if (oldValue == 'NewProduct' && newValue == 'NewEvent') { return 'slide-right' }
+    if (oldValue == 'NewProduct' && newValue == 'ProductList') { return 'slide-up' }
+
     if (oldValue == 'Shop' && newValue == 'NewEvent') { return 'slide-right' }
     if (oldValue == 'Shop' && newValue == 'NewProduct') { return 'slide-right' }
-
-    if (oldValue == 'NewEvent' && newValue == 'EventList') { return 'slide-up' }
-    if (oldValue == 'EventList' && newValue == 'NewEvent') { return 'slide-down' }
-    if (oldValue == 'NewProduct' && newValue == 'ProductList') { return 'slide-up' }
-    if (oldValue == 'ProductList' && newValue == 'NewProduct') { return 'slide-down' }
     if (oldValue == 'Shop' && newValue == 'SellList') { return 'slide-up' }
+
+
+    if (oldValue == 'EventList' && newValue == 'NewEvent') { return 'slide-down' }
+    if (oldValue == 'EventList' && newValue == 'NewProduct') { return 'slide-left' }
+    if (oldValue == 'EventList' && newValue == 'Shop') { return 'slide-left' }
+
+    if (oldValue == 'ProductList' && newValue == 'NewEvent') { return 'slide-right' }
+    if (oldValue == 'ProductList' && newValue == 'NewProduct') { return 'slide-down' }
+    if (oldValue == 'ProductList' && newValue == 'Shop') { return 'slide-left' }
+
     if (oldValue == 'SellList' && newValue == 'Shop') { return 'slide-down' }
 
   };
@@ -144,7 +161,7 @@
   /* Definizione delle classi di transizione per lo scorrimento verso l'alto */
   .slide-up-enter-active,
   .slide-up-leave-active {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   .slide-up-enter-from {
@@ -170,7 +187,7 @@
   /* Definizione delle classi di transizione per lo scorrimento verso il basso */
   .slide-down-enter-active,
   .slide-down-leave-active {
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
   .slide-down-enter-from {
@@ -191,5 +208,18 @@
   .slide-down-leave-to {
     transform: translateY(100%);
     opacity: 0;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 </style>

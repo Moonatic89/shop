@@ -22,21 +22,24 @@
   "products": [
     {
       "id": 1,
-      "name": "Action Figure Superhero",
-      "description": "Action figure del supereroe preferito con dettagli incredibili.",
-      "price": 49.99
+      "subject": "Bakugo",
+      "type":"Disegno",
+      "size": "A4",
+      "price": 9
     },
     {
       "id": 2,
-      "name": "Graphic Novel - Volume 1",
-      "description": "Primo volume di una graphic novel acclamata dalla critica.",
-      "price": 24.99
+      "subject": "Bakugo",
+      "type":"Disegno",
+      "size": "A5",
+      "price": 5
     },
     {
       "id": 3,
-      "name": "T-shirt Edizione Limitata",
-      "description": "T-shirt in cotone con il logo del fumetto.",
-      "price": 19.99
+      "subject": "Bakugo",
+      "type":"Segnalibro",
+      "size": "Normale",
+      "price": 3
     }
   ],
   "sales": [
