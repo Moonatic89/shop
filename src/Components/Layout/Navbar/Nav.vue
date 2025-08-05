@@ -14,13 +14,14 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import { useUserStore } from "../../../stores/User/User";
 const { user, username } = useUserStore();
 
 const links = ref([
   { name: "", label: "Home" },
   { name: "blog", label: "Blog" },
+  { name: "post/new", label: "NewPost" },
   { name: "about", label: "About" },
   { name: "contact", label: "Contact" },
 ]);
@@ -31,6 +32,8 @@ const icons = (label) => {
       return "fa-solid fa-house";
     case "Blog":
       return "fa-solid fa-blog";
+    case "NewPost":
+      return "fa-solid fa-envelope";
     case "About":
       return "fa-solid fa-user";
     case "Contact":

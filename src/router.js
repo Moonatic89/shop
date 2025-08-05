@@ -13,6 +13,31 @@ const routes = [
         component: () => import('./Views/Blog/Blog.vue'),
     },
     {
+        path: '/post/new',
+        name: 'New Post',
+        component: () => import('./Views/Blog/NewPost.vue'),
+    },
+    {
+        path: '/art-og',
+        name: 'ArtOg',
+        component: () => import('./Views/ArtOg/Art.vue'),
+    },
+    {
+        path: '/art-og/new',
+        name: 'NewArtOg',
+        component: () => import('./Views/ArtOg/NewArt.vue'),
+    },
+    {
+        path: '/art-fa',
+        name: 'ArtFa',
+        component: () => import('./Views/ArtFa/Art.vue'),
+    },
+    {
+        path: '/art-fa/new',
+        name: 'NewArtFa',
+        component: () => import('./Views/ArtFa/NewArt.vue'),
+    },
+    {
         path: '/about',
         name: 'About',
         component: () => import('./Views/About/About.vue'),
