@@ -3,12 +3,14 @@
     <Nav />
     <router-view />
   </div>
+
+  <!-- <div>MAIN</div> -->
 </template>
 
 <script setup>
-import Nav from "@/Components/Layout/Navbar/Nav.vue";
 import { useLangStore } from "@/stores/Language/useLangStore";
 import { ref, watchEffect } from "vue";
+import Nav from "./Components/Layout/Navbar/Nav.vue";
 const langStore = useLangStore();
 const text = ref(null);
 

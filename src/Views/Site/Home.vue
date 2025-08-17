@@ -5,10 +5,13 @@
     <!-- Wave transition component -->
     <Wave :state="currentState" @update:state="currentState = $event" />
     <AnimatedLogo />
+
+    <ArtNav />
   </div>
 </template>
 
 <script setup>
+import ArtNav from "@/Components/Home/Arts/ArtNav.vue";
 import AnimatedLogo from "@/Components/Home/Logo/AnimatedLogo.vue";
 import Wave from "@/Components/Home/Waves/Wave.vue";
 import { useLangStore } from "@/stores/Language/useLangStore";
